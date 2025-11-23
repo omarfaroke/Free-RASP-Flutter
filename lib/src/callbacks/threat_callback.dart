@@ -38,6 +38,10 @@ class ThreatCallback extends TalsecPigeonApi {
     this.onMalware,
     this.onScreenshot,
     this.onScreenRecording,
+    this.onMultiInstance,
+    this.onUnsecureWiFi,
+    this.onTimeSpoofing,
+    this.onLocationSpoofing,
   });
 
   /// This method is called when a threat related dynamic hooking (e.g. Frida)
@@ -94,6 +98,18 @@ class ThreatCallback extends TalsecPigeonApi {
 
   /// This method is called when screen recording detected
   final VoidCallback? onScreenRecording;
+
+  /// This method is called when multi-instance is detected
+  final VoidCallback? onMultiInstance;
+
+  /// This method is called when unsecure WiFi is detected
+  final VoidCallback? onUnsecureWiFi;
+
+  /// This method is called when time manipulation is detected
+  final VoidCallback? onTimeSpoofing;
+
+  /// This method is called when location manipulation is detected
+  final VoidCallback? onLocationSpoofing;
 
   @override
   void onMalwareDetected(List<SuspiciousAppInfo> packageInfo) {

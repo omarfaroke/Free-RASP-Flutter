@@ -5,6 +5,163 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.3.0] - 2025-10-20
+- Android SDK version: 17.0.0
+- iOS SDK version: 6.13.0
+
+### Flutter
+
+#### Added
+- Added `killOnBypass` to `TalsecConfig` that configures if the app should be terminated when the threat callbacks are suppressed/hooked by an attacker (Android only) ([Issue 65](https://github.com/talsec/Free-RASP-Android/issues/65))
+- Added `onTimeSpoofing` callback to `ThreatCallback` for handling `Threat.timeSpoofing` threat (Android only)
+  - We are introducing a new capability, detecting whether the device time has been tampered with
+- Added `onLocationSpoofing` callback to `ThreatCallback` for handling `Threat.locationSpoofing` threat (Android only)
+  - We are introducing a new capability, detecting whether the location is being spoofed on the device.
+- Added `onUnsecureWifi` callback to `ThreatCallback` for handling `Threat.unsecureWifi` threat (Android only)
+  - We are introducing a new capability, detecting whether the device is connected to an unsecured Wi-Fi network.
+- Added `onAllChecksDone` callback to new `RaspExecutionStateCallback`
+  - We are introducing a new callback that notifies when all security checks have been completed.
+
+### Android
+
+#### Removed
+- Removed deprecated functionality `Pbkdf2Native` and both related native libraries (`libpbkdf2_native.so` and `libpolarssl.so`)
+
+#### Changed
+- Updated internal dependencies
+
+### iOS
+
+#### Changed
+- Updated internal dependencies
+
+## [7.2.2] - 2025-10-09
+- iOS SDK version: 6.12.1
+- Android SDK version: 16.0.1
+
+### Android
+
+#### Fixed
+- Fixed an issue with crashing screen protector 
+
+## [7.2.1] - 2025-07-18
+- iOS SDK version: 6.12.1
+- Android SDK version: 16.0.1
+
+### iOS
+
+#### Fixed
+- Fixed an issue with native framework
+
+## [7.2.0] - 2025-07-16
+
+- iOS SDK version: 6.12.1
+- Android SDK version: 16.0.1
+
+### Android
+
+#### Added
+
+- Added support for 16 KB memory page sizes
+- Added `onMultiInstance` callback
+  - Detecting whether the application is installed/running in various multi-instancing environments (e.g. Parallel Space)
+
+#### Changed
+
+- The ADB service running as a root is a signal for root detection
+- Improved emulator detection
+- Internal security improvements
+
+#### Fixed
+
+- Removed malware report duplicates
+
+### iOS
+
+#### Added
+
+- Added palera1n jailbreak detection
+
+#### Changed
+
+- Improved Dopamine jailbreak detection
+
+#### Fixed
+
+- Resolved memory-related stability issues.
+
+## [7.1.0] - 2025-05-19
+
+- iOS SDK version:  6.11.0
+- Android SDK version: 15.1.0
+
+### Flutter
+
+#### Added
+
+- Added interface for screenshot / screen recording blocking on iOS
+- Added interface for external ID storage
+
+### Android
+
+#### Added
+
+- Added externalId to put an integrator-specified custom identifier into the logs.
+- Added eventId to the logs, which is unique per each log. It allows traceability of the same log across various systems.
+
+#### Changed
+
+- New root detection checks added
+
+### iOS
+
+#### Added
+
+- Added externalId to put an integrator-specified custom identifier into the logs.
+- Added eventId to the logs, which is unique per each log. It allows traceability of the same log across various systems.
+- Screen capture protection obscuring app content in screenshots and screen recordings preventing unauthorized content capture. Refer to the freeRASP integration documentation.
+
+#### Fixed
+
+- Issue with the screen recording detection.
+- Issue that prevented Xcode tests from running correctly.
+- Issue that caused compilation errors due to unknown references.
+
+## [7.0.0] - 2024-03-26
+
+- iOS SDK version:  6.9.0
+- Android SDK version: 15.0.0
+
+### Flutter
+
+#### Added
+- `fvm` support for Flutter version management
+
+#### Changed
+- Updated versions for example app
+
+### Android
+
+#### Changed
+- Breaking: Raised kotlin version to 2.1.0
+- Compile API increased to 35, dependencies updated
+- Internal library obfuscation reworked
+- Root detection divided into 2 parts (quick initial checks, and time-demanding asynchronous post checks)
+
+#### Fixed
+
+- ANR issues bug-fixing
+
+### iOS
+
+#### Added
+
+- Improvement of the obfuscation of the SDK.
+
+#### Changed
+
+- Deep signing of the OpenSSL binaries.
+
 ## [6.12.0] - 2025-02-18
 
 - iOS SDK version:  6.8.0

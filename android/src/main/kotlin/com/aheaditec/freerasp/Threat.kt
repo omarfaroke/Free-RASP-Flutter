@@ -37,4 +37,12 @@ internal sealed class Threat(val value: Int) {
     object Screenshot : Threat(705651459)
 
     object ScreenRecording : Threat(64690214)
+
+    object MultiInstance : Threat(859307284)
+
+    object UnsecureWiFi : Threat(363588890)
+
+    object TimeSpoofing : Threat(189105221)
+
+    object LocationSpoofing : Threat(653273273)
 }

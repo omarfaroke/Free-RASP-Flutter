@@ -66,6 +66,28 @@ enum Threat {
 
   /// Screen recording was started active the application was in the foreground.
   screenRecording,
+
+  /// This method is called when multiple instances of the app
+  /// are detected on the device
+  ///
+  /// Android only
+  multiInstance,
+
+  /// This method is called when the device is connected to a WiFi with a no
+  /// or weak security protocol.
+  ///
+  /// Android only
+  unsecureWiFi,
+
+  /// This method is called when the device time is manipulated
+  ///
+  /// Android only
+  timeSpoofing,
+
+  /// This method is called when the device location is manipulated
+  ///
+  /// Android only
+  locationSpoofing,
 }
 
 /// An extension on the [Threat] enum to provide additional functionality.
@@ -99,6 +121,7 @@ extension ThreatX on Threat {
   /// * 379769839 - adbEnabled
   /// * 705651459 - screenshot
   /// * 64690214 - screenRecording
+  /// * 859307284 - multiInstance
   static Threat fromInt(int code) {
     switch (code) {
       case 1268968002:
@@ -133,6 +156,14 @@ extension ThreatX on Threat {
         return Threat.screenshot;
       case 64690214:
         return Threat.screenRecording;
+      case 859307284:
+        return Threat.multiInstance;
+      case 363588890:
+        return Threat.unsecureWiFi;
+      case 189105221:
+        return Threat.timeSpoofing;
+      case 653273273:
+        return Threat.locationSpoofing;
       default:
         // Unknown data came from native code. This shouldn't normally happen.
         exit(127);

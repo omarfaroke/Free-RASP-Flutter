@@ -1,15 +1,22 @@
 ![FreeRasp](https://raw.githubusercontent.com/talsec/Free-RASP-Community/master/visuals/freeRASP.png)
 
-![GitHub Repo stars](https://img.shields.io/github/stars/talsec/Free-RASP-Community?color=green) ![Likes](https://img.shields.io/pub/likes/freerasp?color=green!) ![Likes](https://img.shields.io/pub/points/freerasp) ![GitHub](https://img.shields.io/github/license/talsec/Free-RASP-Community) ![GitHub](https://img.shields.io/github/last-commit/talsec/Free-RASP-Community) [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
-![Publisher](https://img.shields.io/pub/publisher/freerasp) [![42matters](https://42matters.com/badges/sdk-installations/talsec)](https://42matters.com/sdks/android/talsec)
+![GitHub Repo stars](https://img.shields.io/github/stars/talsec/Free-RASP-Community?color=green)
+![Likes](https://img.shields.io/pub/likes/freerasp?color=green!)
+![Points](https://img.shields.io/pub/points/freerasp)
+![License](https://img.shields.io/github/license/talsec/Free-RASP-Community)
+![Last Commit](https://img.shields.io/github/last-commit/talsec/Free-RASP-Community)
+[![Style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
+![Version Management](https://img.shields.io/badge/version%20management-fvm-purple?labelColor=gray&style=flat)
+![Publisher](https://img.shields.io/pub/publisher/freerasp)
+[![42matters](https://42matters.com/badges/sdk-installations/talsec)](https://42matters.com/sdks/android/talsec)
 
 [<img src="https://assets.42matters.com/badges/2024/04/rising-star.svg?m=04" width="100"/>](https://42matters.com/sdks/android/talsec)
 
 # freeRASP for Flutter
 
-freeRASP for Flutter is a mobile in-app protection and security monitoring SDK. It aims to cover the main aspects of RASP (Runtime App Self Protection) and application shielding.
+freeRASP for Flutter is a mobile in-app threat detection and security monitoring SDK. It aims to cover the main aspects of RASP (Runtime App Self Protection) and application shielding.
 
-:loudspeaker: [The official documentation has been moved to a new location. You can now find it here](https://docs.talsec.app/docs-and-articles-portal). :loudspeaker:
+:loudspeaker: [The official documentation has been moved to a new location. You can now find it here](https://docs.talsec.app/docs-and-articles-portal?utm_source=github). :loudspeaker:
 
 # Overview
 
@@ -29,7 +36,7 @@ Key features are the detection and prevention of
 * Untrusted installation method
 * App/Device (un)binding
 
-Additional freeRASP features include low latency, easy integration and a weekly [Security Report](https://docs.talsec.app/freerasp/security-report) containing detailed information about detected incidents and potential threats, summarizing the state of your app security.
+Additional freeRASP features include low latency, easy integration and a weekly [Security Report](https://docs.talsec.app/freerasp/security-report?utm_source=github) containing detailed information about detected incidents and potential threats, summarizing the state of your app security.
 
 The commercial version provides a top-notch protection level, extra features, support and maintenance. One of the most valued commercial features is AppiCrypt® - App Integrity Cryptogram.
 
@@ -42,7 +49,7 @@ It allows easy to implement API protection and App Integrity verification on the
 
 It is a unified solution that works across all mobile platforms without dependency on external web services (i.e., without extra latency, an additional point of failure, and maintenance costs).
 
-Learn more about commercial features at [https://talsec.app](https://talsec.app).
+Learn more about commercial features at [https://talsec.app](https://talsec.app?utm_source=github).
 
 Learn more about freemium freeRASP features at [GitHub main repository](https://github.com/talsec/Free-RASP-Community).
 
@@ -52,17 +59,17 @@ Learn more about freemium freeRASP features at [GitHub main repository](https://
 After the integration of freeRASP, make sure you visit the [freeMalwareDetection](https://github.com/talsec/freeMalwareDetection) repository to learn more about this feature!
 
 # :book: Discover the Official freeRASP Documentation
-Visit the [GitBook page](https://docs.talsec.app/freerasp) for comprehensive and up-to-date guides, tutorials, and technical documentation specifically for freeRASP. It serves as your go-to resource, offering everything from basic instructions to advanced tips and tricks to help you get the most out of the project.
+Visit the [GitBook page](https://docs.talsec.app/freerasp?utm_source=github) for comprehensive and up-to-date guides, tutorials, and technical documentation specifically for freeRASP. It serves as your go-to resource, offering everything from basic instructions to advanced tips and tricks to help you get the most out of the project.
 
-:loudspeaker: [The official documentation has been moved to a new location. You can now find it here](https://docs.talsec.app/docs-and-articles-portal). :loudspeaker:
+:loudspeaker: [The official documentation has been moved to a new location. You can now find it here](https://docs.talsec.app/docs-and-articles-portal?utm_source=github). :loudspeaker:
 
 ## :link: Integration Guide
-For integrating freeRASP on the Flutter platform, be sure to follow all the steps in the [Integration Guide](https://docs.talsec.app/freerasp/integration). This guide provides detailed instructions to help you achieve a smooth and efficient integration.
+For integrating freeRASP on the Flutter platform, be sure to follow all the steps in the [Integration Guide](https://docs.talsec.app/freerasp/integration?utm_source=github). This guide provides detailed instructions to help you achieve a smooth and efficient integration.
 
 Be sure to bookmark it and stay informed! :books: :sparkles:.
 
 # :rocket: What's New and Changelog
-Stay informed and make the most of freeRASP by checking out [What's New and Changelog](https://docs.talsec.app/freerasp/whats-new-and-changelog)! Here, you’ll discover the latest features, enhancements, and bug fixes we’ve implemented to improve your experience across all platforms, including Android, iOS, Flutter, React Native, Capacitor, and Cordova.
+Stay informed and make the most of freeRASP by checking out [What's New and Changelog](https://docs.talsec.app/freerasp/whats-new-and-changelog?utm_source=github)! Here, you’ll discover the latest features, enhancements, and bug fixes we’ve implemented to improve your experience across all platforms, including Android, iOS, Flutter, React Native, Capacitor, and Cordova.
 
 Don’t miss out on any updates and explore the changelog to see how we’re continually making freeRASP better for you!
 
@@ -74,4 +81,4 @@ You can check out the project board [here](https://github.com/orgs/talsec/projec
 
 # :page_facing_up: License
 
-This project is provided as freemium software, i.e. there is a [fair usage policy](https://docs.talsec.app/freerasp/features-and-pricing-plans#plans-comparison) that imposes some limitations on the free usage. The SDK software consists of open-source and binary parts, which is the property of Talsec. The open-source part is licensed under the MIT License - see the LICENSE file for details.
+This project is provided as freemium software, i.e. there is a [fair usage policy](https://docs.talsec.app/freerasp/features-and-pricing-plans#plans-comparison?utm_source=github) that imposes some limitations on the free usage. The SDK software consists of open-source and binary parts, which is the property of Talsec. The open-source part is licensed under the MIT License - see the LICENSE file for details.
