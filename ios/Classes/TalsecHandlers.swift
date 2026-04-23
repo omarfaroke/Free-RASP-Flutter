@@ -14,16 +14,20 @@ private let unofficialStoreValue = 629780916
 private let systemVPNValue = 659382561
 private let screenshotValue = 705651459
 private let screenRecordingValue = 64690214
+private let timeSpoofingValue = 189105221
 
 /// Extension with submits events to plugin
 extension SecurityThreatCenter: SecurityThreatHandler, TalsecRuntime.RaspExecutionState  {
     
     public func threatDetected(_ securityThreat: TalsecRuntime.SecurityThreat) {
-        SwiftFreeraspPlugin.instance.submitEvent(securityThreat)
+        if securityThreat == .passcodeChange {
+            return
+        }
+        ThreatDispatcher.shared.dispatch(threat: securityThreat)
     }
     
     public func onAllChecksFinished() {
-        SwiftFreeraspPlugin.instance.submitFinishedEvent()
+        ExecutionStateDispatcher.shared.dispatch(event: .allChecksFinished)
     }
 }
 
@@ -59,6 +63,8 @@ extension SecurityThreat {
             return screenshotValue
         case .screenRecording:
             return screenRecordingValue
+        case .timeSpoofing:
+            return timeSpoofingValue
         @unknown default:
             return unknownValue
         }

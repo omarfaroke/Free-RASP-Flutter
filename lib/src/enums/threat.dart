@@ -80,14 +80,17 @@ enum Threat {
   unsecureWiFi,
 
   /// This method is called when the device time is manipulated
-  ///
-  /// Android only
   timeSpoofing,
 
   /// This method is called when the device location is manipulated
   ///
   /// Android only
   locationSpoofing,
+
+  /// This method is called when automation is detected
+  ///
+  /// Android only
+  automation,
 }
 
 /// An extension on the [Threat] enum to provide additional functionality.
@@ -122,6 +125,7 @@ extension ThreatX on Threat {
   /// * 705651459 - screenshot
   /// * 64690214 - screenRecording
   /// * 859307284 - multiInstance
+  /// * 298453120 - automation
   static Threat fromInt(int code) {
     switch (code) {
       case 1268968002:
@@ -164,6 +168,8 @@ extension ThreatX on Threat {
         return Threat.timeSpoofing;
       case 653273273:
         return Threat.locationSpoofing;
+      case 298453120:
+        return Threat.automation;
       default:
         // Unknown data came from native code. This shouldn't normally happen.
         exit(127);

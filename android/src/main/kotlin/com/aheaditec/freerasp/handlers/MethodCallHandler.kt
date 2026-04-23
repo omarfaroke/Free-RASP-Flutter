@@ -9,9 +9,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.aheaditec.freerasp.Utils
-import com.aheaditec.freerasp.generated.RaspExecutionState
-import com.aheaditec.freerasp.runResultCatching
 import com.aheaditec.freerasp.generated.TalsecPigeonApi
+import com.aheaditec.freerasp.resolve
+import com.aheaditec.freerasp.runResultCatching
 import com.aheaditec.freerasp.toPigeon
 import com.aheaditec.talsec_security.security.api.SuspiciousAppInfo
 import com.aheaditec.talsec_security.security.api.Talsec
@@ -28,7 +28,6 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
     private var context: Context? = null
     private var methodChannel: MethodChannel? = null
     private var talsecPigeon: TalsecPigeonApi? = null
-    private var raspExecutionPigeon : RaspExecutionState? = null
     private val backgroundHandlerThread = HandlerThread("BackgroundThread").apply { start() }
     private val backgroundHandler = Handler(backgroundHandlerThread.looper)
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -53,22 +52,10 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
                 }
             }
         }
-
-        override fun onAllChecksFinished() {
-            raspExecutionPigeon?.onAllChecksFinished { result ->
-                // Parse the result (which is Unit so we can ignore it) or throw an exception
-                // Exceptions are translated to Flutter errors automatically
-                result.getOrElse {
-                    Log.e("MethodCallHandlerSink", "Result ended with failure")
-                    throw it
-                }
-            }
-        }
     }
 
     internal interface MethodSink {
         fun onMalwareDetected(packageInfo: List<SuspiciousAppInfo>)
-        fun onAllChecksFinished()
     }
 
     /**
@@ -91,7 +78,6 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
 
         this.context = context
         this.talsecPigeon = TalsecPigeonApi(messenger)
-        this.raspExecutionPigeon = RaspExecutionState(messenger)
 
         TalsecThreatHandler.attachMethodSink(sink)
     }
@@ -105,7 +91,6 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
 
         this.context = null
         this.talsecPigeon = null
-        this.raspExecutionPigeon = null
 
         TalsecThreatHandler.detachMethodSink()
     }
@@ -138,6 +123,7 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
             "blockScreenCapture" -> blockScreenCapture(call, result)
             "isScreenCaptureBlocked" -> isScreenCaptureBlocked(result)
             "storeExternalId" -> storeExternalId(call, result)
+            "removeExternalId" -> removeExternalId(result)
             else -> result.notImplemented()
         }
     }
@@ -231,11 +217,26 @@ internal class MethodCallHandler : MethodCallHandler, LifecycleEventObserver {
         runResultCatching(result) {
             context?.let {
                 val data = call.argument<String>("data") ?: throw NullPointerException("External ID data cannot be null.")
-                Talsec.storeExternalId(it, data)
-                result.success(null)
+                Talsec.storeExternalId(it, data).resolve(result)
                 return@runResultCatching
             }
             throw IllegalStateException("Unable to store external ID - context is null")
+        }
+    }
+
+    /**
+     * Removes the external ID.
+     *
+     * @param result The result handler of the method call.
+     */
+    private fun removeExternalId(result: MethodChannel.Result) {
+        runResultCatching(result) {
+            context?.let {
+                Talsec.removeExternalId(it)
+                result.success(null)
+                return@runResultCatching
+            }
+            throw IllegalStateException("Unable to remove external ID - context is null")
         }
     }
 }
