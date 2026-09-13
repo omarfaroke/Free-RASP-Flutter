@@ -5,6 +5,141 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.2.2] - 2026-08-25
+
+- Android SDK version: 19.2.3
+- iOS SDK version: 7.1.2
+
+### Android
+
+#### Fixed
+
+- Fixed the reporting issue in root detection
+- Fixed the reporting issue in hook detection
+
+## [8.2.1] - 2026-08-10
+
+- Android SDK version: 19.2.1
+- iOS SDK version: 7.1.2
+
+### Flutter
+
+#### Fixed
+
+- Fixed published package contents so required iOS framework artifacts are included
+- Included the example entrypoint for pub.dev; the full demo app remains in the repository only
+- Excluded non-essential development files (tests, codegen inputs, build outputs) from the published package
+
+### Android
+
+#### Fixed
+
+- Moved `-flattenpackagehierarchy` out of consumer ProGuard rules to restore AGP 8+ compatibility
+
+## [8.2.0] - 2026-08-05
+
+- Android SDK version: 19.2.1
+- iOS SDK version: 7.1.2
+
+### Flutter
+
+#### Added
+
+- Added `onBootloader` callback for detecting an unlocked or compromised bootloader (Android only).
+
+### Android
+
+#### Added
+
+- Added bootloader detection (unlocked/compromised) with `onBootloader()` callback
+- Added option to fetch JitPack dependencies from our own Talsec repository
+
+#### Changed
+
+- Improved KernelSU detection
+- Improved hook detection
+- Improved Frida detection
+- Improved root detection capabilities
+
+#### Fixed
+
+- Fixed native crash caused by std::terminate() race condition
+- Fixed periodic hook and root check overwriting
+- Fixed crash inside AppZygotePreload during root detection
+- Fixed root detection crash in obfuscated release builds
+- Fixed hardware-backed keystore detection failing with `NoSuchMethodError` on some Android 12+ devices
+
+### iOS
+
+#### Changed
+
+- Improved jailbreak detection
+
+## [8.1.0] - 2026-07-23
+
+- Android SDK version: 18.3.0
+- iOS SDK version: 7.1.1
+
+### Flutter
+
+#### Added
+
+- Swift Package Manager (SPM) support for iOS. Requires Flutter 3.41.0 or newer; CocoaPods remains supported on older versions.
+
+### iOS
+
+#### Added
+
+- Added support for postponed checks, therefore, due to slower execution, some subchecks are run after initial startup checks.
+- Improved hook detection.
+
+#### Fixed
+
+- Fixed issue with app's color scheme initialization.
+- Fixed bad memory access in jailbreak check.
+
+#### Changed
+
+- Raised the minimum iOS deployment target to 13.0, as required by the iOS SDK.
+
+## [8.0.0] - 2026-05-13
+
+- Android SDK version: 18.3.0
+- iOS SDK version: 6.14.4
+
+### Flutter
+
+#### Breaking
+
+- `RaspExecutionStateCallback.onAllChecksDone` renamed to `onAllChecksFinished`
+- `PackageInfo.installationSource` renamed to `installerStore`
+- `SuspiciousAppInfo.reason` (String) renamed to `reasons` (List\<String\>)
+- Value `"blacklist"` in `reasons` renamed to `"blocklist"`
+- Removed `MalwareConfig` and `AndroidConfig.malwareConfig` — use `SuspiciousAppDetectionConfig` instead
+
+#### Added
+
+- `SuspiciousAppInfo.permissions` field (`List<String>?`) — list of suspicious permissions detected on the app
+
+### Android
+
+#### Added
+
+- New API class `SuspiciousAppDetectionConfig` that can be used to configure malware detection
+- New API for malware detection configuration in `TalsecConfig`, see `TalsecConfig.Builder#suspiciousAppDetection`
+
+#### Fixed
+
+- Fixed `VerifyError` caused by `JaCoCo` bytecode instrumentation
+- Fixed a potential cause of crash in the multi-instance detector
+- Fixed Java interoperability of `ScreenProtector` methods
+- Fixed Kotlin classpath conflicts in SDK dependency resolution (Kotlin 2.0.0)
+
+#### Changed
+
+- Fine-tuned location spoofing detection
+- Modified malware incident log structure for better aggregation
+
 ## [7.5.1] - 2026-03-24
 
 - Android SDK version: 18.0.4

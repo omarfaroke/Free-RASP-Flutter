@@ -311,6 +311,8 @@ class Talsec {
           callback.onLocationSpoofing?.call();
         case Threat.automation:
           callback.onAutomation?.call();
+        case Threat.bootloader:
+          callback.onBootloader?.call();
       }
     });
   }
@@ -341,7 +343,7 @@ class Talsec {
     _executionStateSubscription ??= onRaspExecutionState.listen((event) {
       switch (event) {
         case RaspExecutionState.allChecksFinished:
-          callback.onAllChecksDone?.call();
+          callback.onAllChecksFinished?.call();
       }
     });
   }
